@@ -13,7 +13,7 @@ import type { PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
     title: {
-        template: "%s | Clayton Real Estate",
+        template: "Clayton Real Estate",
         default: "Superadmin Dashboard",
     },
     description:

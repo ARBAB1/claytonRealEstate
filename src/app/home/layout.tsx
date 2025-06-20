@@ -14,11 +14,11 @@ import type { PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
   title: {
-      template: "%s | Clayton Real Estate",
-      default: "Superadmin Dashboard",
+    template: "Clayton Real Estate",
+    default: "Superadmin Dashboard",
   },
   description:
-      "To manage mobile application via this dashboard.",
+    "To manage mobile application via this dashboard.",
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
