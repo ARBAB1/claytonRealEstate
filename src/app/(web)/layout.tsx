@@ -13,11 +13,11 @@ import type { PropsWithChildren } from "react";
 
 export const metadata: Metadata = {
     title: {
-        template: "%s | NextAdmin - Next.js Dashboard Kit",
-        default: "NextAdmin - Next.js Dashboard Kit",
+        template: "%s | Clayton Real Estate",
+        default: "Superadmin Dashboard",
     },
     description:
-        "Next.js admin dashboard toolkit with 200+ templates, UI components, and integrations for fast dashboard development.",
+        "To manage mobile application via this dashboard.",
 };
 
 export default function WebLayout({ children }: PropsWithChildren) {
