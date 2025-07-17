@@ -15,6 +15,14 @@ const config: Config = {
         xsm: "425px",
         "3xl": "2000px",
       },
+      safelist: [
+        'transform',
+        'peer',
+        'peer-checked:translate-x-full',
+        'transition-transform',
+      ],
+      
+
       colors: {
         current: "currentColor",
         transparent: "transparent",
@@ -274,7 +282,11 @@ const config: Config = {
       content: {
         "icon-copy": 'url("../images/icon/icon-copy-alt.svg")',
       },
-      transitionProperty: { width: "width", stroke: "stroke" },
+      transitionProperty: {
+        width: "width",
+        stroke: "stroke",
+        transform: "transform", // ✅ Add this line
+      },
       borderWidth: {
         6: "6px",
         10: "10px",

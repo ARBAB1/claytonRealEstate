@@ -1,11 +1,12 @@
 'use client';
 
 import { EmailIcon, PasswordIcon } from '@/assets/icons';
-
+import Link from 'next/link';
 import React, { useState } from 'react';
-import InputGroup from '../FormElements/InputGroup';``
-
+import InputGroup from '../FormElements/InputGroup';
+import { Checkbox } from '../FormElements/checkbox';
 import { useRouter } from 'next/navigation';
+import { loginUser } from '../home/_components/constants/Apis';
 
 export default function SigninWithPassword() {
   const router = useRouter();
@@ -27,24 +28,26 @@ export default function SigninWithPassword() {
     setError('');
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    setError('');
 
-    // Demo credentials (you can also load from .env if needed)
-    const demoEmail = 'demo@admin.com';
-    const demoPass = 'demo123';
+    try {
+      const res = await loginUser({ username: data.email, password: data.password });
 
-    setTimeout(() => {
-      setLoading(false);
-      if (data.email === demoEmail && data.password === demoPass) {
-        router.push('/home');
+      if (res.accessToken) {
+        localStorage.setItem('token', res.accessToken); // Save token if needed
+        router.push('/home'); // Redirect to dashboard
       } else {
-        setError('Invalid email or password.');
+        setError(res.error || 'Invalid email or password.');
       }
-    }, 800);
+    } catch (err) {
+      setError('Something went wrong. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
-
   return (
     <form onSubmit={handleSubmit}>
       <InputGroup
